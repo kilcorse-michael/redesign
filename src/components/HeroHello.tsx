@@ -17,7 +17,7 @@ export default function HeroHello() {
               <h1 className="text-white flex-row text-7xl lg:text-9xl m-l-1">
                 Michael Kilcorse
               </h1>
-              <h3 className="text-[#9001f5] md:ml-48 flex-row xs:text-2xl md:text-4xl lg:text-5xl m-l-1">
+              <h3 className="text-[#9001f5] md:ml-48 flex-row text-2xl md:text-4xl lg:text-5xl m-l-1">
                 [maɪ/kəl/] - [kɪl kɔrs]
               </h3>
             </Parallax>

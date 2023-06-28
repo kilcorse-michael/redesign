@@ -58,6 +58,12 @@
   animation: dash 3s linear alternate;
   animation-fill-mode: forwards;
 }
+
+@layer base {
+  body {
+    background-color: #0f172a;
+  }
+}
 @layer components {
   .reset {
     transition: transform 500ms ease-in-out;
