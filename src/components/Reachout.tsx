@@ -30,7 +30,7 @@ export default function Reachout() {
           <div className="w-4/5 md:w-2/5 my-10 md:my-0 border-b-4 border-r-4 p-1 text-center border-[#ff0178]">
             <h1 className="text-[#9001f5] text-4xl md:text-7xl">
               Explore my{" "}
-              <span className="text-white hover:drop-shadow-glow">
+              <span className="text-white  hover:drop-shadow-glow">
                 <Link to="/portfolio">Portfolio</Link>
               </span>{" "}
               or{" "}
