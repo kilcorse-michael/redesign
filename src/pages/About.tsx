@@ -6,9 +6,19 @@ export default function About() {
       <Header />
       <div className="about-background overflow-hidden relative h-screen">
         <div className="w-screen">
-          <h1 className="text-white fixed left-20 top-20 border-b-4 p-3 border-[#ff0178] text-7xl m-5">
-            About
-          </h1>
+          <div className="fixed left-20 top-20">
+            <h1 className="text-white border-b-4 p-3 border-[#ff0178] text-7xl m-5">
+              About
+            </h1>
+            <a href="./resume.pdf" download>
+              <button
+                type="button"
+                className="bg-[#ff0178] border-black border-b-2 p-2 text-4xl w-96 rounded-md text-white"
+              >
+                Download Resume
+              </button>
+            </a>
+          </div>
           <div className="text-white flex text-center items-center justify-center flex-col text-5xl">
             <div className="w-screen h-screen snap-y overflow-auto snap-mandatory">
               <section className="snap-start h-screen mx-auto w-1/2 flex items-center justify-center">
@@ -109,6 +119,7 @@ export default function About() {
                   </div>
                 </div>
               </section>
+              <section className="text-8xl text-white"></section>
             </div>
           </div>
         </div>
