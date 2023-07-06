@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
+import axios from "axios";
 
 interface ContactFormValues {
   email: string;
@@ -10,23 +11,22 @@ interface ContactFormValues {
 const Contact: React.FC = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    subject: "",
+    message: "",
+  });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const contactData: ContactFormValues = {
-      email: formData.get("email") as string,
-      subject: formData.get("subject") as string,
-      message: formData.get("message") as string,
-    };
+    const contactData: ContactFormValues = formData;
 
     try {
       // Handle form submission logic, e.g., send data to the server or API
+      console.log(contactData);
       await submitContactForm(contactData);
 
       // Reset the form and show success message
-      event.currentTarget.reset();
       setSubmissionSuccess(true);
       setSubmissionError("");
     } catch (error) {
@@ -37,11 +37,32 @@ const Contact: React.FC = () => {
   };
 
   const submitContactForm = async (contactData: ContactFormValues) => {
-    // Perform form submission logic here, such as sending data to the server or API
-    // You can use libraries like Axios or fetch for making HTTP requests
-    // Example:
-    // const response = await axios.post('/api/contact', contactData);
-    // Handle the response as needed
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/contact",
+        contactData
+      );
+
+      if (response.status === 200) {
+        const data = response.data;
+        console.log(data.message);
+      } else {
+        // Error submitting the form
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      throw error;
+    }
+  };
+
+  const handleChange: React.FormEventHandler<HTMLFormElement> = (event) => {
+    const { name, value } = event.target as HTMLInputElement;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -57,7 +78,11 @@ const Contact: React.FC = () => {
             currently available for hire and would love to hear about any
             opportunity or project that I would be a fit for. Thank you!
           </p>
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+            className="space-y-8"
+          >
             <div>
               <label
                 htmlFor="email"
@@ -68,8 +93,9 @@ const Contact: React.FC = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                placeholder="name@flowbite.com"
+                placeholder="youremail@email.com"
                 required
               />
             </div>
@@ -83,6 +109,7 @@ const Contact: React.FC = () => {
               <input
                 type="text"
                 id="subject"
+                name="subject"
                 className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                 placeholder="Let us know how we can help you"
                 required
@@ -97,6 +124,7 @@ const Contact: React.FC = () => {
               </label>
               <textarea
                 id="message"
+                name="message"
                 rows={6}
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Leave a comment..."
