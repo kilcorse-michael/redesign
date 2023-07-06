@@ -1,13 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const routes = require("./functions/routes");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
+require("dotenv").config();
 
 // Connect to MongoDB/Atlas
 mongoose
   .connect(
-    "mongodb+srv://dbUserPrime:0qgmwilMF9azhwCm@cluster0.vkkgk.mongodb.net/portfolioResponses?retryWrites=true&w=majority",
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vkkgk.mongodb.net/portfolioResponses?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
