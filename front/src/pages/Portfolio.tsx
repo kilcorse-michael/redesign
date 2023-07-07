@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import jeffPic from "../assets/projects/jeff-mann.png";
-import kiddPic from "../assets/projects/kiddpro.png";
-import otPic from "../assets/projects/OT-pic.png";
+import jeffPic from "../assets/projects/jeff-mann.webp";
+import kiddPic from "../assets/projects/kiddpro.webp";
+import otPic from "../assets/projects/OT-pic.webp";
 
 interface Project {
   title: string;

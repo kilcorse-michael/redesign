@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-export function onScreen(ref) {
+export function onScreen(ref: any) {
   const [isOnScreen, setIsOnScreen] = useState(false);
   const observerRef = useRef<any>();
 

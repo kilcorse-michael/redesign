@@ -22,8 +22,7 @@ const Contact: React.FC = () => {
     const contactData: ContactFormValues = formData;
 
     try {
-      // Handle form submission logic, e.g., send data to the server or API
-      console.log(contactData);
+      // Handle form submission logic
       await submitContactForm(contactData);
 
       // Reset the form and show success message
@@ -39,18 +38,10 @@ const Contact: React.FC = () => {
 
   const submitContactForm = async (contactData: ContactFormValues) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/contact",
+      await axios.post(
+        "https://us-central1-portfolio-9da26.cloudfunctions.net/api/contact",
         contactData
       );
-
-      if (response.status === 200) {
-        const data = response.data;
-        console.log(data.message);
-      } else {
-        // Error submitting the form
-        throw new Error("Form submission failed");
-      }
     } catch (error) {
       console.error("Error submitting form:", error);
       throw error;

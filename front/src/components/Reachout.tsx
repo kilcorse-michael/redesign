@@ -1,6 +1,6 @@
 import React from "react";
 import { ParallaxBanner } from "react-scroll-parallax";
-import MickPic from "../assets/mick.png";
+import MickPic from "../assets/mick.webp";
 import { Link } from "react-router-dom";
 
 const Reachout: React.FC = () => {
