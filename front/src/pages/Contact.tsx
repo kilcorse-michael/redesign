@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
   const submitContactForm = async (contactData: ContactFormValues) => {
     try {
       await axios.post(
-        "https://us-central1-portfolio-9da26.cloudfunctions.net/api/contact",
+        "https://us-central1-portfolio-9da26.cloudfunctions.net/api/api",
         contactData
       );
     } catch (error) {
@@ -87,6 +87,7 @@ const Contact: React.FC = () => {
                 className="shadow-sm text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500 shadow-sm-light"
                 placeholder="youremail@email.com"
                 defaultValue={formData.email}
+                value={formData.email}
                 required
               />
             </div>
@@ -102,8 +103,9 @@ const Contact: React.FC = () => {
                 id="subject"
                 name="subject"
                 className="block p-3 w-full text-sm   rounded-lg border  shadow-sm focus:ring-primary-500 focus:border-primary-500 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500 shadow-sm-light"
-                placeholder="Let us know how we can help you"
+                placeholder="What do you want to talk about?"
                 defaultValue={formData.subject}
+                value={formData.subject}
                 required
               />
             </div>
@@ -119,16 +121,19 @@ const Contact: React.FC = () => {
                 name="message"
                 rows={6}
                 className="block p-2.5 w-full text-sm   rounded-lg shadow-sm border  focus:ring-primary-500 focus:border-primary-500 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500"
-                placeholder="Leave a comment..."
+                placeholder="Your message..."
                 defaultValue={formData.message}
+                value={formData.message}
               />
             </div>
-            <button
-              type="submit"
-              className="bg-[#ff0178] border-black  border-b-2 p-2 text-xl md:text-4xl w-96 rounded-md text-white"
-            >
-              SEND
-            </button>
+            <div className="w-full flex justify-center items-center">
+              <button
+                type="submit"
+                className="bg-[#ff0178] border-black  border-b-2 p-2 text-xl md:text-4xl w-96 rounded-md text-white"
+              >
+                SEND
+              </button>
+            </div>
           </form>
           {/* Show success message */}
           {submissionSuccess && (

@@ -29,7 +29,7 @@ const Reachout: React.FC = () => {
         />
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center w-full h-full bg-[#00003f]">
           <div className="w-4/5 md:w-2/5 h-1/4 md:my-0 border-b-4 border-r-4 p-1 text-center border-[#ff0178]">
-            <h1 className="text-[#9001f5] text-4xl md:text-7xl">
+            <h1 className="text-[#9001f5] text-2xl md:text-7xl">
               Explore my{" "}
               <span className="text-white  hover:drop-shadow-glow">
                 <Link to="/portfolio">Portfolio</Link>
@@ -37,11 +37,11 @@ const Reachout: React.FC = () => {
             </h1>
           </div>
           <div className="w-4/5 md:w-2/5 border-b-4 border-l-4 p-1 h-1/4 text-center border-[#ff0178]">
-            <h1 className="text-[#9001f5] text-4xl md:text-7xl">
+            <h1 className="text-[#9001f5] text-2xl md:text-7xl">
+              Say{" "}
               <span className="text-white hover:drop-shadow-glow">
-                <Link to="/contact">Reach Out</Link>
-              </span>{" "}
-              and let's start a conversation!
+                <Link to="/contact">Hello!</Link>
+              </span>
             </h1>
           </div>
         </div>

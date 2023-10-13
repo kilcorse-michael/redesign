@@ -67,6 +67,10 @@
   animation: fade-in 1s linear;
 }
 
+.portfolio-img {
+  animation: fade-in 0.5s;
+}
+
 @layer base {
   body {
     background-color: #0f172a;
